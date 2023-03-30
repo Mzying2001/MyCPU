@@ -26,13 +26,13 @@ static const uint32_t FETCH[6] = {
 /// @param ir 指令
 /// @param psw 程序状态字
 /// @return
-static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
+static int Write(uint32_t *buf, uint8_t ir, uint8_t psw)
 {
     uint8_t op;
     uint8_t amd; // 目标地址寻址方式
     uint8_t ams; // 源地址寻址方式
 
-    bool isok = true;
+    int isok = 1;
 
     if (ir & ADDR2)
     {
@@ -86,7 +86,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -108,7 +108,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -130,7 +130,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -152,7 +152,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -174,7 +174,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -196,7 +196,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -218,13 +218,13 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
 
         default:
-            isok = false;
+            isok = 0;
             break;
         }
     }
@@ -246,7 +246,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -261,7 +261,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -276,7 +276,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -304,7 +304,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
                 *buf = jump ? (PC_IN | DST_OUT | PIN_CYC)
                             : (PIN_CYC);
             else
-                isok = false;
+                isok = 0;
         }
         break;
 
@@ -331,7 +331,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -350,7 +350,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -372,7 +372,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
@@ -398,13 +398,13 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             }
             else
             {
-                isok = false;
+                isok = 0;
             }
         }
         break;
 
         default:
-            isok = false;
+            isok = 0;
             break;
         }
     }
@@ -455,7 +455,7 @@ static bool Write(uint32_t *buf, uint8_t ir, uint8_t psw)
             break;
 
         default:
-            isok = false;
+            isok = 0;
             break;
         }
     }
