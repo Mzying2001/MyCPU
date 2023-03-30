@@ -110,6 +110,6 @@ static const uint32_t ALU_STI = PIN_ALU_INT_W;               // 中断允许
 static const uint32_t ALU_CLI = PIN_ALU_INT_W | PIN_ALU_INT; // 关中断
 
 static const uint32_t PIN_HLT = 1 << 31; // 程序停止位
-static const uint32_t PIN_CYC = 1 << 30; // CYC清零位，执行吓一跳指令
+static const uint32_t PIN_CYC = 1 << 30; // CYC清零位，执行下一条指令
 
 #endif //_PIN_H_
